@@ -9,7 +9,7 @@ class News(models.Model):
     image = models.ImageField(upload_to='images/')
     icon = models.ImageField(upload_to='images/')
     votes_total = models.IntegerField(default=1)
-    hunter = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_add = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

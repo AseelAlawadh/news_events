@@ -7,9 +7,9 @@ from django.utils import timezone
 # Create your views here.
 
 def home(request):
-
     news = News.objects
     return render(request, 'news/home.html', {'news': news})
+
 
 @login_required(login_url='/accounts/signup')
 def create(request):
@@ -29,19 +29,20 @@ def create(request):
             news.image = request.FILES['image']
             news.pub_date = timezone.datetime.now()
             # news.votes_total = 1
-            news.hunter = request.user
+            news.user_add = request.user
             news.save()
-            return redirect('/products/'+ str(news.id))
+            return redirect('/news/' + str(news.id))
         else:
-            return render(request, 'products/create.html')
+            return render(request, 'news/create.html')
 
     else:
-        return render(request, 'products/create.html', {'error': 'all fields required'})
+        return render(request, 'news/create.html', {'error': 'all fields required'})
 
 
 def detail(request, news_id):
     news = get_object_or_404(News, pk=news_id)
-    return render(request,'news/detail.html',{'news':news})
+    return render(request, 'news/detail.html', {'news': news})
+
 
 @login_required(login_url='/accounts/signup')
 def upvote(request, news_id):
