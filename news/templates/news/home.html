@@ -9,17 +9,9 @@
          <h5>{{ news.title }}</h5>
          <p>{{ news.summary }}</p>
      </div>
-     <div class="col-4">
-{#          <a href="javascript:{document.getElementById('upvote{{ news.id }}').submit()}">#}
-{#                <button class="btn btn-primary btn-lg btn-block"><span#}
-{#                        class="oi oi-caret-top"></span> Upvote{{ news.votes_total }}</button>#}
-{#            </a>#}
+
     </div>
-    </div>
-{#        <form id="upvote{{ news.id }}" method="POST" action="{% url 'upvote' news.id %}">#}
-{#        {% csrf_token %}#}
-{#        <input type="hidden">#}
-{#    </form>#}
+
 
     {% endfor %}
 
